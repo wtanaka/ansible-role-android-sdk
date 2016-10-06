@@ -1,0 +1,5 @@
+---
+install_dir: "/opt/android-sdk{{package_os}}"
+package_ext: "tgz"
+package_os: "-linux"
+package_name: unzip

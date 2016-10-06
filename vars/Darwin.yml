@@ -1,0 +1,4 @@
+---
+install_dir: "/opt/android-sdk{{package_os}}"
+package_ext: "zip"
+package_os: "-macosx"

@@ -1,0 +1,4 @@
+---
+dl_base_url: "https://dl.google.com/android/android-sdk_"
+local_package_dir: "/tmp"
+version: "r24.4.1"
