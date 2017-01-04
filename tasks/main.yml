@@ -10,8 +10,10 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Check if android studio is installed
-  stat: path={{install_dir}}
+  command: grep {{android_sdk_build}} /opt/android-sdk-{{package_ext}}
   register: install
+  failed_when: False
+  changed_when: False
 
 - name: Download Android SDK .zip
   command: >
@@ -19,7 +21,7 @@
     {{dl_base_url}}{{version}}{{package_os}}.{{package_ext}}
   args:
     creates: "{{local_package_dir}}/android_sdk_download.{{package_ext}}"
-  when: install.stat.isdir is not defined or not install.stat.isdir
+  when: install|failed
 
 - name: install unzip with default package manager
   action: "{{backcompat_pkg_mgr}} name={{package_name}}"
@@ -37,12 +39,12 @@
 - name: Unzip Android Studio
   command: unzip -od /opt "{{local_package_dir}}/android_sdk_download.{{package_ext}}"
   sudo: True
-  when: (install.stat.isdir is not defined or not install.stat.isdir) and package_ext == "zip"
+  when: install|failed and package_ext == "zip"
 
 - name: Untar Android Studio
   command: tar xvfoz "{{local_package_dir}}/android_sdk_download.{{package_ext}}"
   sudo: True
-  when: (install.stat.isdir is not defined or not install.stat.isdir) and package_ext == "tgz"
+  when: install|failed and package_ext == "tgz"
   args:
     chdir: /opt
-    creates: /opt/android-sdk-{{package_ext}}
+    creates: /opt/android-sdk{{package_os}}

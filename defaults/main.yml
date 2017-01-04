@@ -2,3 +2,6 @@
 dl_base_url: "https://dl.google.com/android/android-sdk_"
 local_package_dir: "/tmp"
 version: "r24.4.1"
+# Contents of build.txt for {{version}} -- used to check if already
+# installed
+android_sdk_build: "145.3537739"
