@@ -1,4 +1,6 @@
 ---
 install_dir: "/opt/android-sdk{{package_os}}"
-package_os: "-windows"
 package_ext: "zip"
+package_os: "-windows"
+package_names:
+- unzip
