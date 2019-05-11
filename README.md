@@ -11,7 +11,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - wtanaka.android-sdk
+         - wtanaka.android_sdk
 
 License
 -------
@@ -21,4 +21,4 @@ GPLv2
 Author Information
 ------------------
 
-http://wtanaka.com/
+https://wtanaka.com/
